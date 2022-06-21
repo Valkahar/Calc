@@ -1,5 +1,5 @@
 public class Calculation {
-    public static void Arithmetic_Expression(String expressions) throws Exception {
+    public static String Arithmetic_Expression(String expressions) throws Exception {
         int summ = 0;
         if (expressions.equals("+"))
             summ = Main.input1Int + Main.input2Int;
@@ -11,7 +11,8 @@ public class Calculation {
             summ = Main.input1Int / Main.input2Int;
         else throw new Exception("Некорректный ввод данных");
 
-        if (Main.input1B) {
+        String rez2 = null;
+        if (Main.input1B && summ > 0) {
             StringBuilder ans = new StringBuilder();
             if (summ == 40) {
                 System.out.println("XL");
@@ -47,8 +48,13 @@ public class Calculation {
                 else if (summ == 7) ans.append("VII");
                 else if (summ == 8) ans.append("IIX");
                 else if (summ == 9) ans.append("IX");
-                System.out.println(ans);
+                String rez = new String(ans);
+                return rez;
             }
-        } else System.out.println(summ);
+        } else if (Main.input1B && summ < 1) {
+            throw new Exception("Некорректный ввод данных");
+        } else
+            rez2 = Integer.toString(summ);
+        return rez2;
     }
 }

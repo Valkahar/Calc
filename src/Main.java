@@ -5,12 +5,16 @@ public class Main {
     static boolean input1B = false, input2B = false;
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Введите два числа и арифметический оператор:");
+        System.out.println("Введите строку с арифметическим выражением между двумя числами:");
         Scanner sc = new Scanner(System.in);
-        String[] input = sc.nextLine().split(" ");
+        String input = sc.nextLine();
+        System.out.println(calc(input));
+    }
+    public static String calc(String input) throws Exception {
+        String[] in = input.split(" ");
         int counter = 0;
         String input1 = "", input2 = "", Arithmetic_Expression = "";
-        for (String elem : input) {
+        for (String elem : in) {
             if (counter == 0) input1 = elem;
             if (counter == 1) Arithmetic_Expression = elem;
             if (counter == 2) input2 = elem;
@@ -30,7 +34,7 @@ public class Main {
                 input2Int = Numbers.NumToArab(input2);
             }
             if (input1Int > 0 && input1Int <= 10 && input2Int > 0 && input2Int <= 10)
-                Calculation.Arithmetic_Expression(Arithmetic_Expression);
+                return Calculation.Arithmetic_Expression(Arithmetic_Expression);
             else
                 throw new Exception("Некорректный ввод данных");
         } else
